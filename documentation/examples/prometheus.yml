@@ -18,6 +18,12 @@ rule_files:
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
+remote_write:
+ - url: "http://localhost:8086/api/v1/prom/write?db=prometheus&u=admin&p=1nflux@Db"
+
+remote_read:
+  - url: "http://localhost:8086/api/v1/prom/read?db=prometheus&u=admin&p=1nflux@Db"
+
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: "prometheus"
@@ -27,3 +33,10 @@ scrape_configs:
 
     static_configs:
       - targets: ["localhost:9090"]
+      
+  - job_name: "websphere_exporter"
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ["192.168.0.219:9080"]
+
