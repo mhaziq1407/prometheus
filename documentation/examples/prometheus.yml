@@ -19,10 +19,10 @@ rule_files:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 remote_write:
- - url: "http://localhost:8086/api/v1/prom/write?db=prometheus&u=admin&p=1nflux@Db"
+ - url: "http://172.30.110.222:8086/api/v1/prom/write?db=prometheus&u=admin&p=1nflux@Db"
 
 remote_read:
-  - url: "http://localhost:8086/api/v1/prom/read?db=prometheus&u=admin&p=1nflux@Db"
+  - url: "http://172.30.110.222:8086/api/v1/prom/read?db=prometheus&u=admin&p=1nflux@Db"
 
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
